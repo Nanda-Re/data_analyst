@@ -1,0 +1,5 @@
+Total Hari: 731
+Total Pengguna: 3292679
+Rata-rata Pengguna per Hari: 4504.35
+Rata-rata Pengguna pada Hari Kerja: 15701.44
+Rata-rata Pengguna pada Akhir Pekan: 2740.46
