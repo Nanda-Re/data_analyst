@@ -3,5 +3,6 @@ Total Bike Users (08:00-16:00): 1653898
 Total Bike Users (Other Hours): 3292679
 
 Graph Data:
-Days,Effective Hours,Other Hours
-731,1653898,3292679
+Days : 731
+Effective Hours: 1653898
+Other Hours: 3292679
