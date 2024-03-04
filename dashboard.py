@@ -25,7 +25,7 @@ except Exception as e:
 
 # Load data from daily analysis file
 try:
-    daily_data = pd.read_csv("analisis_penggunaan.txt", sep=",", skiprows=1, error_bad_lines=False)
+    daily_data = pd.read_csv("analisis_penggunaan.txt", sep=",", skiprows=1)
     if daily_data is None:
         raise ValueError("Data is None. Please check the format/content of analisis_penggunaan.txt.")
     
