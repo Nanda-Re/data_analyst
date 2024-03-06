@@ -63,9 +63,10 @@ st.pyplot(fig_hourly)
 # Chart for Daily Data
 st.subheader("Daily Data Chart")
 fig_daily, ax_daily = plt.subplots()
-daily_data.plot(x='actual_column_name_1', y=['actual_column_name_2', 'actual_column_name_3', 'actual_column_name_4', 'actual_column_name_5'], kind='bar', ax=ax_daily)
-ax_daily.set_xlabel('X-Axis Label')  # Replace 'X-Axis Label' with the appropriate label for the x-axis
-ax_daily.set_ylabel('Y-Axis Label')  # Replace 'Y-Axis Label' with the appropriate label for the y-axis
+daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
+ax_daily.set_xlabel('Total hari')  # Replace 'X-Axis Label' with the appropriate label for the x-axis
+ax_daily.set_ylabel('Total Pengguna')  # Replace 'Y-Axis Label' with the appropriate label for the y-axis
 st.pyplot(fig_daily)
+
 
 # Rest of the code remains unchanged...
