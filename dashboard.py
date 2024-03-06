@@ -77,7 +77,7 @@ st.pyplot(fig1)
 # Chart for Daily Data
 # Data
 total_hari = 731
-total_pengguna = 3292679
+total_pengguna = 0
 rata_rata_pengguna_per_hari = 4504.35
 rata_rata_pengguna_hari_kerja = 15701.44
 rata_rata_pengguna_akhir_pekan = 2740.46
