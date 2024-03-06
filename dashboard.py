@@ -16,6 +16,14 @@ try:
         total_days_hour = hourly_data["Days"].iloc[0]
         total_bike_users_effective_hours = hourly_data["Effective Hours"].iloc[0]
         total_bike_users_other_hours = hourly_data["Other Hours"].iloc[0]
+
+        # Chart for Hourly Data
+        st.subheader("Hourly Data Chart")
+        fig_hourly, ax_hourly = plt.subplots()
+        hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
+        ax_hourly.set_xlabel('Days')
+        ax_hourly.set_ylabel('Hours')
+        st.pyplot(fig_hourly)
         
     else:
         ValueError=False    
@@ -64,9 +72,8 @@ st.pyplot(fig_hourly)
 st.subheader("Daily Data Chart")
 fig_daily, ax_daily = plt.subplots()
 daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
-ax_daily.set_xlabel('Total hari')  # Replace 'X-Axis Label' with the appropriate label for the x-axis
-ax_daily.set_ylabel('Total Pengguna')  # Replace 'Y-Axis Label' with the appropriate label for the y-axis
+ax_daily.set_xlabel('Total hari') 
+ax_daily.set_ylabel('Total Pengguna') 
 st.pyplot(fig_daily)
 
 
-# Rest of the code remains unchanged...
