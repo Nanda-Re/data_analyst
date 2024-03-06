@@ -16,17 +16,17 @@ try:
         total_days_hour = hourly_data["Days"].iloc[0]
         total_bike_users_effective_hours = hourly_data["Effective Hours"].iloc[0]
         total_bike_users_other_hours = hourly_data["Other Hours"].iloc[0]
-
-        # Chart for Hourly Data
-        st.subheader("Hourly Data Chart")
-        fig_hourly, ax_hourly = plt.subplots()
-        hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
-        ax_hourly.set_xlabel('Days')
-        ax_hourly.set_ylabel('Hours')
-        st.pyplot(fig_hourly)
         
     else:
-        ValueError=False    
+        ValueError=False  
+
+    # Chart for Hourly Data
+    st.subheader("Hourly Data Chart")
+    fig_hourly, ax_hourly = plt.subplots()
+    hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
+    ax_hourly.set_xlabel('Days')
+    ax_hourly.set_ylabel('Hours')
+    st.pyplot(fig_hourly)
 
 except pd.errors.ParserError as e:
     st.error(f"Error reading bike_analysis.txt: {e}")
@@ -53,6 +53,14 @@ try:
         avg_users_weekend = daily_data["actual_column_name_5"].iloc[0]
     else:
         ValueError=False
+
+    # Chart for Daily Data
+    st.subheader("Daily Data Chart")
+    fig_daily, ax_daily = plt.subplots()
+    daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
+    ax_daily.set_xlabel('Total hari') 
+    ax_daily.set_ylabel('Total Pengguna') 
+    st.pyplot(fig_daily)
 except pd.errors.ParserError as e:
     st.error(f"Error reading analisis_penggunaan.txt: {e}")
     st.stop()
@@ -60,13 +68,20 @@ except Exception as e:
     st.error(f"An unexpected error occurred while processing analisis_penggunaan.txt: {e}")
     st.stop()
 
+# # Chart for Hourly Data
+# st.subheader("Hourly Data Chart")
+# fig_hourly, ax_hourly = plt.subplots()
+# hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
+# ax_hourly.set_xlabel('Days')
+# ax_hourly.set_ylabel('Hours')
+# st.pyplot(fig_hourly)
 
-# Chart for Daily Data
-st.subheader("Daily Data Chart")
-fig_daily, ax_daily = plt.subplots()
-daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
-ax_daily.set_xlabel('Total hari') 
-ax_daily.set_ylabel('Total Pengguna') 
-st.pyplot(fig_daily)
+# # Chart for Daily Data
+# st.subheader("Daily Data Chart")
+# fig_daily, ax_daily = plt.subplots()
+# daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
+# ax_daily.set_xlabel('Total hari') 
+# ax_daily.set_ylabel('Total Pengguna') 
+# st.pyplot(fig_daily)
 
 
