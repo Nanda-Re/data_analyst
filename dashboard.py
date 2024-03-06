@@ -7,28 +7,18 @@ try:
     hourly_data = pd.read_csv("bike_analysis.txt", sep=",", skiprows=2)
     if hourly_data is None:
         raise ValueError("Data is None. Please check the format/content of bike_analysis.txt.")
-
+    
     # Print the loaded data for debugging
     st.write("Hourly Data:")
     st.write(hourly_data)
 
-    # Check if columns exist in the dataframe
     if "Days" in hourly_data.columns and "Effective Hours" in hourly_data.columns and "Other Hours" in hourly_data.columns:
-        # Extract values from the dataframe
         total_days_hour = hourly_data["Days"].iloc[0]
         total_bike_users_effective_hours = hourly_data["Effective Hours"].iloc[0]
         total_bike_users_other_hours = hourly_data["Other Hours"].iloc[0]
-
-        # Print extracted values for debugging
-        st.write("Total Days Hourly:", total_days_hour)
-        st.write("Total Effective Hours:", total_bike_users_effective_hours)
-        st.write("Total Other Hours:", total_bike_users_other_hours)
-
-        # Check for NaN values
-        if any(pd.isna([total_days_hour, total_bike_users_effective_hours, total_bike_users_other_hours])):
-            st.warning("Some values are NaN in the hourly data. Please check the data.")
+        
     else:
-        st.warning("Columns are missing in the hourly data.")
+        ValueError=False    
 
 except pd.errors.ParserError as e:
     st.error(f"Error reading bike_analysis.txt: {e}")
@@ -42,29 +32,19 @@ try:
     daily_data = pd.read_csv("analisis_penggunaan.txt", sep=",", skiprows=1)
     if daily_data is None:
         raise ValueError("Data is None. Please check the format/content of analisis_penggunaan.txt.")
-
+    
     # Print the loaded data for debugging
     st.write("Daily Data:")
     st.write(daily_data)
 
-    # Check if columns exist in the dataframe
     if "actual_column_name_1" in daily_data.columns and "actual_column_name_2" in daily_data.columns and "actual_column_name_3" in daily_data.columns:
-        # Extract values from the dataframe
         total_days_day = daily_data["actual_column_name_1"].iloc[0]
         total_users = daily_data["actual_column_name_2"].iloc[0]
         avg_users_per_day = daily_data["actual_column_name_3"].iloc[0]
-
-        # Print extracted values for debugging
-        st.write("Total Days Daily:", total_days_day)
-        st.write("Total Users:", total_users)
-        st.write("Average Users per Day:", avg_users_per_day)
-
-        # Check for NaN values
-        if any(pd.isna([total_days_day, total_users, avg_users_per_day])):
-            st.warning("Some values are NaN in the daily data. Please check the data.")
+        avg_users_weekday = daily_data["actual_column_name_4"].iloc[0]
+        avg_users_weekend = daily_data["actual_column_name_5"].iloc[0]
     else:
-        st.warning("Columns are missing in the daily data.")
-
+        ValueError=False
 except pd.errors.ParserError as e:
     st.error(f"Error reading analisis_penggunaan.txt: {e}")
     st.stop()
@@ -72,22 +52,20 @@ except Exception as e:
     st.error(f"An unexpected error occurred while processing analisis_penggunaan.txt: {e}")
     st.stop()
 
-# Bar chart
-fig, ax = plt.subplots()
+# Chart for Hourly Data
+st.subheader("Hourly Data Chart")
+fig_hourly, ax_hourly = plt.subplots()
+hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
+ax_hourly.set_xlabel('Days')
+ax_hourly.set_ylabel('Hours')
+st.pyplot(fig_hourly)
 
-# Data for the bar chart
-labels = ['Hourly Analysis', 'Daily Analysis']
-values = [total_days_hour, total_days_day]
-
-# Plotting the bar chart
-ax.bar(labels, values)
-
-# Adding labels and title
-ax.set_ylabel('Total Days')
-ax.set_title('Total Days for Hourly and Daily Analysis')
-
-# Show the chart using Streamlit
-st.pyplot(fig)
+# Chart for Daily Data
+st.subheader("Daily Data Chart")
+fig_daily, ax_daily = plt.subplots()
+daily_data.plot(x='actual_column_name_1', y=['actual_column_name_2', 'actual_column_name_3', 'actual_column_name_4', 'actual_column_name_5'], kind='bar', ax=ax_daily)
+ax_daily.set_xlabel('X-Axis Label')  # Replace 'X-Axis Label' with the appropriate label for the x-axis
+ax_daily.set_ylabel('Y-Axis Label')  # Replace 'Y-Axis Label' with the appropriate label for the y-axis
+st.pyplot(fig_daily)
 
 # Rest of the code remains unchanged...
-# Add your specific logic below this point.
