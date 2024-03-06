@@ -53,6 +53,7 @@ except Exception as e:
     st.stop()
 
 # Chart for Hourly Data
+
 # Data
 days = 731
 effective_hours = 1653898
@@ -62,10 +63,16 @@ other_hours = 3292679
 labels = ['Effective Hours', 'Other Hours']
 values = [effective_hours, other_hours]
 
-plt.bar(labels, values, color=['blue', 'orange'])
-plt.title('Hours Distribution')
-plt.ylabel('Hours')
-plt.show()
+# Streamlit app
+st.title('Hours Distribution Chart')
+
+fig1, ax = plt.subplots()
+ax.bar(labels, values, color=['blue', 'orange'])
+ax.set_ylabel('Hours')
+
+# Display the chart in the Streamlit app
+st.pyplot(fig1)
+
 
 # Chart for Daily Data
 # Data
@@ -79,10 +86,13 @@ rata_rata_pengguna_akhir_pekan = 2740.46
 labels = ['Total Pengguna', 'Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan']
 values = [total_pengguna, rata_rata_pengguna_per_hari, rata_rata_pengguna_hari_kerja, rata_rata_pengguna_akhir_pekan]
 
-plt.bar(labels, values, color=['blue', 'orange', 'green', 'red'])
-plt.title('Statistik Pengguna')
-plt.ylabel('Jumlah Pengguna')
-plt.show()
+fig, ax = plt.subplots()
+ax.bar(labels, values, color=['blue', 'orange', 'green', 'red'])
+ax.set_title('Statistik Pengguna')
+ax.set_ylabel('Jumlah Pengguna')
+
+# Display the chart in Streamlit
+st.pyplot(fig)
 
 
 
