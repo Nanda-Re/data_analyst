@@ -55,10 +55,12 @@ except Exception as e:
 # Chart for Hourly Data
 st.subheader("Hourly Data Chart")
 fig_hourly, ax_hourly = plt.subplots()
-# Try to convert 'Days' column to numeric (in case it's not)
-hourly_data['Days'] = pd.to_numeric(hourly_data['Days'], errors='coerce')
-hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
-ax_hourly.set_xlabel('Days')
+Days = 731
+Effective = 1653898
+Other = 3292679
+Total = 731
+hourly_data.plot(x=Days, y=[Effective, Other], kind='bar', ax=ax_hourly)
+ax_hourly.set_xlabel(Days)
 ax_hourly.set_ylabel('Hours')
 st.pyplot(fig_hourly)
 
