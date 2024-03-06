@@ -53,16 +53,19 @@ except Exception as e:
     st.stop()
 
 # Chart for Hourly Data
-st.subheader("Hourly Data Chart")
-fig_hourly, ax_hourly = plt.subplots()
-Days = 731
-Effective = 1653898
-Other = 3292679
-Total = 731
-hourly_data.plot(x=Days, y=[Effective, Other], kind='bar', ax=ax_hourly)
-ax_hourly.set_xlabel(Days)
-ax_hourly.set_ylabel('Hours')
-st.pyplot(fig_hourly)
+# Data
+days = 731
+effective_hours = 1653898
+other_hours = 3292679
+
+# Create a bar chart
+labels = ['Effective Hours', 'Other Hours']
+values = [effective_hours, other_hours]
+
+plt.bar(labels, values, color=['blue', 'orange'])
+plt.title('Hours Distribution')
+plt.ylabel('Hours')
+plt.show()
 
 # Chart for Daily Data
 st.subheader("Daily Data Chart")
