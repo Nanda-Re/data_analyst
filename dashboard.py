@@ -77,14 +77,13 @@ st.pyplot(fig1)
 # Chart for Daily Data
 # Data
 total_hari = 731
-total_pengguna = 0
 rata_rata_pengguna_per_hari = 4504.35
 rata_rata_pengguna_hari_kerja = 15701.44
 rata_rata_pengguna_akhir_pekan = 2740.46
 
 # Create a bar chart
-labels = ['Total Pengguna', 'Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan']
-values = [total_pengguna, rata_rata_pengguna_per_hari, rata_rata_pengguna_hari_kerja, rata_rata_pengguna_akhir_pekan]
+labels = [ 'Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan']
+values = [ rata_rata_pengguna_per_hari, rata_rata_pengguna_hari_kerja, rata_rata_pengguna_akhir_pekan]
 
 fig, ax = plt.subplots()
 ax.bar(labels, values, color=['blue', 'orange', 'green', 'red'])
