@@ -8,11 +8,27 @@ try:
     if hourly_data is None:
         raise ValueError("Data is None. Please check the format/content of bike_analysis.txt.")
 
-    # Extract relevant information
-    if "Days" in hourly_data.columns:
+    # Print the loaded data for debugging
+    st.write("Hourly Data:")
+    st.write(hourly_data)
+
+    # Check if columns exist in the dataframe
+    if "Days" in hourly_data.columns and "Effective Hours" in hourly_data.columns and "Other Hours" in hourly_data.columns:
+        # Extract values from the dataframe
         total_days_hour = hourly_data["Days"].iloc[0]
+        total_bike_users_effective_hours = hourly_data["Effective Hours"].iloc[0]
+        total_bike_users_other_hours = hourly_data["Other Hours"].iloc[0]
+
+        # Print extracted values for debugging
+        st.write("Total Days Hourly:", total_days_hour)
+        st.write("Total Effective Hours:", total_bike_users_effective_hours)
+        st.write("Total Other Hours:", total_bike_users_other_hours)
+
+        # Check for NaN values
+        if any(pd.isna([total_days_hour, total_bike_users_effective_hours, total_bike_users_other_hours])):
+            st.warning("Some values are NaN in the hourly data. Please check the data.")
     else:
-        total_days_hour = 0
+        st.warning("Columns are missing in the hourly data.")
 
 except pd.errors.ParserError as e:
     st.error(f"Error reading bike_analysis.txt: {e}")
@@ -27,11 +43,27 @@ try:
     if daily_data is None:
         raise ValueError("Data is None. Please check the format/content of analisis_penggunaan.txt.")
 
-    # Extract relevant information
-    if "actual_column_name_1" in daily_data.columns:
+    # Print the loaded data for debugging
+    st.write("Daily Data:")
+    st.write(daily_data)
+
+    # Check if columns exist in the dataframe
+    if "actual_column_name_1" in daily_data.columns and "actual_column_name_2" in daily_data.columns and "actual_column_name_3" in daily_data.columns:
+        # Extract values from the dataframe
         total_days_day = daily_data["actual_column_name_1"].iloc[0]
+        total_users = daily_data["actual_column_name_2"].iloc[0]
+        avg_users_per_day = daily_data["actual_column_name_3"].iloc[0]
+
+        # Print extracted values for debugging
+        st.write("Total Days Daily:", total_days_day)
+        st.write("Total Users:", total_users)
+        st.write("Average Users per Day:", avg_users_per_day)
+
+        # Check for NaN values
+        if any(pd.isna([total_days_day, total_users, avg_users_per_day])):
+            st.warning("Some values are NaN in the daily data. Please check the data.")
     else:
-        total_days_day = 0
+        st.warning("Columns are missing in the daily data.")
 
 except pd.errors.ParserError as e:
     st.error(f"Error reading analisis_penggunaan.txt: {e}")
@@ -56,3 +88,6 @@ ax.set_title('Total Days for Hourly and Daily Analysis')
 
 # Show the chart using Streamlit
 st.pyplot(fig)
+
+# Rest of the code remains unchanged...
+# Add your specific logic below this point.
