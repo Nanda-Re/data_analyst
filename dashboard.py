@@ -60,13 +60,6 @@ except Exception as e:
     st.error(f"An unexpected error occurred while processing analisis_penggunaan.txt: {e}")
     st.stop()
 
-# Chart for Hourly Data
-st.subheader("Hourly Data Chart")
-fig_hourly, ax_hourly = plt.subplots()
-hourly_data.plot(x='Days', y=['Effective Hours', 'Other Hours'], kind='bar', ax=ax_hourly)
-ax_hourly.set_xlabel('Days')
-ax_hourly.set_ylabel('Hours')
-st.pyplot(fig_hourly)
 
 # Chart for Daily Data
 st.subheader("Daily Data Chart")
