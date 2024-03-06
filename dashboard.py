@@ -68,12 +68,21 @@ plt.ylabel('Hours')
 plt.show()
 
 # Chart for Daily Data
-st.subheader("Daily Data Chart")
-fig_daily, ax_daily = plt.subplots()
-daily_data.plot(x='Total Hari', y=['Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan'], kind='bar', ax=ax_daily)
-ax_daily.set_xlabel('Total hari') 
-ax_daily.set_ylabel('Total Pengguna') 
-st.pyplot(fig_daily)
+# Data
+total_hari = 731
+total_pengguna = 3292679
+rata_rata_pengguna_per_hari = 4504.35
+rata_rata_pengguna_hari_kerja = 15701.44
+rata_rata_pengguna_akhir_pekan = 2740.46
+
+# Create a bar chart
+labels = ['Total Pengguna', 'Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan']
+values = [total_pengguna, rata_rata_pengguna_per_hari, rata_rata_pengguna_hari_kerja, rata_rata_pengguna_akhir_pekan]
+
+plt.bar(labels, values, color=['blue', 'orange', 'green', 'red'])
+plt.title('Statistik Pengguna')
+plt.ylabel('Jumlah Pengguna')
+plt.show()
 
 
 
