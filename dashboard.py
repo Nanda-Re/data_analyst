@@ -52,47 +52,4 @@ except Exception as e:
     st.error(f"An unexpected error occurred while processing analisis_penggunaan.txt: {e}")
     st.stop()
 
-# Chart for Hourly Data
-
-# Data
-days = 731
-effective_hours = 1653898
-other_hours = 3292679
-
-# Create a bar chart
-labels = ['Effective Hours', 'Other Hours']
-values = [effective_hours, other_hours]
-
-# Streamlit app
-st.title('Hours Distribution Chart')
-
-fig1, ax = plt.subplots()
-ax.bar(labels, values, color=['blue', 'orange'])
-ax.set_ylabel('Hours')
-
-# Display the chart in the Streamlit app
-st.pyplot(fig1)
-
-
-# Chart for Daily Data
-# Data
-total_hari = 731
-total_pengguna = 3292679
-rata_rata_pengguna_per_hari = 4504.35
-rata_rata_pengguna_hari_kerja = 15701.44
-rata_rata_pengguna_akhir_pekan = 2740.46
-
-# Create a bar chart
-labels = ['Total Pengguna', 'Rata-rata Pengguna per Hari', 'Rata-rata Pengguna pada Hari Kerja', 'Rata-rata Pengguna pada Akhir Pekan']
-values = [total_pengguna, rata_rata_pengguna_per_hari, rata_rata_pengguna_hari_kerja, rata_rata_pengguna_akhir_pekan]
-
-fig, ax = plt.subplots()
-ax.bar(labels, values, color=['blue', 'orange', 'green', 'red'])
-ax.set_title('Statistik Pengguna')
-ax.set_ylabel('Jumlah Pengguna')
-
-# Display the chart in Streamlit
-st.pyplot(fig)
-
-
-
+# Rest of the code remains unchanged...
